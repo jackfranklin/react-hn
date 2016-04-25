@@ -6,15 +6,15 @@ var SettingsStore = require('../stores/SettingsStore')
 var pluralise = require('../utils/pluralise')
 
 var parseHost = (function() {
-  var a = document.createElement('a')
-  return function(url) {
-    a.href = url
-    var parts = a.hostname.split('.').slice(-3)
-    if (parts[0] === 'www') {
-      parts.shift()
-    }
-    return parts.join('.')
-  }
+  // var a = document.createElement('a')
+  // return function(url) {
+  //   a.href = url
+  //   var parts = a.hostname.split('.').slice(-3)
+  //   if (parts[0] === 'www') {
+  //     parts.shift()
+  //   }
+  //   return parts.join('.')
+  // }
 })()
 
 /**
@@ -65,7 +65,7 @@ var ItemMixin = {
     return <div className="Item__title" style={{fontSize: SettingsStore.titleFontSize}}>
       {title}
       {hasURL && ' '}
-      {hasURL && <span className="Item__host">({parseHost(item.url)})</span>}
+      {hasURL && <span className="Item__host">({(item.url)})</span>}
     </div>
   }
 }

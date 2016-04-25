@@ -19,10 +19,12 @@ var App = React.createClass({
     SettingsStore.load()
     StoryStore.loadSession()
     UpdatesStore.loadSession()
+    if (typeof window == 'undefined') return;
     window.addEventListener('beforeunload', this.handleBeforeUnload)
   },
 
   componentWillUnmount() {
+    if (typeof window == 'undefined') return;
     window.removeEventListener('beforeunload', this.handleBeforeUnload)
   },
 
@@ -60,7 +62,6 @@ var App = React.createClass({
         {this.props.children}
       </div>
       <div className="App__footer">
-        {`react-hn v${__VERSION__} | `}
         <a href="https://github.com/insin/react-hn">insin/react-hn</a>
       </div>
       </div>
